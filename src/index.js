@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import ErrorBoundary from 'component/ErrorBoundary';
+import GitHubPublicRepoList from 'view/GitHubPublicRepoList'
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ErrorBoundary>
+      <GitHubPublicRepoList />
+    </ErrorBoundary>
   </React.StrictMode>,
   document.getElementById('root')
 );
