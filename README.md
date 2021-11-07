@@ -1,3 +1,25 @@
+# 啟動專案
+
+npx serve -s build
+
+# 簡易架構說明
+
+在主畫面元件的外層包裝錯誤邊界(src/component/ErrorBoundary)
+主畫面顯示分為三部分
+1.畫面標題
+2.查詢輸入欄
+3.查詢資料顯示
+
+輸入查詢後改變查詢字串狀態(queryString)並重製查詢狀況狀態(page, end, dataList, isLoading, isError)
+在fetchData加入debounce機制變為delayFetch，大量減少查詢條件尚未輸入完的無效查詢。
+透過useEffect觸發delayFetch查詢新資料
+
+設計useScroll hook，透過ref對元素加入scroll event的監聽。
+抓取元素offsetHeight與scrollHeight得出可捲動的高度來和已捲動高度做比較判斷是否捲到最底。
+如果捲到最底則page + 1來觸發useEffect執行delayFetch。
+假如dataList的length等於回傳的total_count，則end設為true，阻止page再加1。
+假如isLoading為true，則新資料還在查詢中，同樣會阻止page再加1。
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
