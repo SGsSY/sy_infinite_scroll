@@ -9,7 +9,7 @@
 /coverage
 
 # production
-# /build 2021/11/7 取消 為了能npx serve -s build啟動
+/build
 
 # misc
 .DS_Store
